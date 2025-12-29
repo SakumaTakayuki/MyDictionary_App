@@ -10,7 +10,23 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-st.set_page_config(page_title="個人辞書", page_icon="📘", layout="wide")
+st.set_page_config(
+    page_title="個人辞書",
+    page_icon="📘",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+    menu_items={},
+)
+st.markdown(
+    """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 st.title("📘 個人辞書（単語・用語管理）")
 st.caption("単語と意味を登録し、検索・編集・削除できます（スマホ/PC対応・DB同期）")
 
