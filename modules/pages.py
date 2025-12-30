@@ -11,7 +11,7 @@ from modules.db_manager import (
     delete_word,
 )
 from modules.dataclass import WordInput, build_word_entity
-from modules.utils import esc, load_users
+from modules.utils import esc, load_users, format_japan_datetime
 
 
 # ----------------------------
@@ -202,7 +202,7 @@ def show_list_page():
                 <div style='margin-top:6px; color:#555; white-space: pre-wrap; word-break: break-word; overflow-wrap: break-word;'>📝メモ<br>{esc(word_row.memo)}</div>
 
                 <div style="margin-top:8px; color:#888; font-size:0.8em;">
-                    更新: {word_row.updated_at.strftime("%Y-%m-%d %H:%M")}
+                    更新: {format_japan_datetime(word_row.updated_at)}
                 </div>
             </div>
             """

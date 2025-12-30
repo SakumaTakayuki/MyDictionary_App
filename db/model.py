@@ -1,6 +1,4 @@
-from datetime import datetime
-from zoneinfo import ZoneInfo
-from sqlalchemy import Column, Integer, String, Text, DateTime, Index
+from sqlalchemy import Column, Integer, String, Text, DateTime, Index, func
 from db.session import Base
 
 
@@ -14,12 +12,16 @@ class Word(Base):
     category = Column(String(100), nullable=True)
     memo = Column(Text, nullable=True)
     created_at = Column(
-        DateTime, default=datetime.now(ZoneInfo("Asia/Tokyo")), nullable=False
+        DateTime(timezone=True),
+        server_default=func.now(),
+        default=func.now(),
+        nullable=False,
     )
     updated_at = Column(
-        DateTime,
-        default=datetime.now(ZoneInfo("Asia/Tokyo")),
-        onupdate=datetime.now(ZoneInfo("Asia/Tokyo")),
+        DateTime(timezone=True),
+        server_default=func.now(),
+        default=func.now(),
+        onupdate=func.now(),
         nullable=False,
     )
 
